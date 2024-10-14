@@ -14,10 +14,8 @@ RUN npm install
 COPY . .
 
 # Expose the port the app will run on (default is 3000)
-EXPOSE ${PORT:-3000}
+EXPOSE 3000
 
-# Define environment variable for default port
-ENV PORT=${PORT:-3000}
 
 # Command to run the app
 CMD ["node", "index.js"]
