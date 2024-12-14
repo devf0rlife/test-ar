@@ -1,21 +1,12 @@
-# Use an official Node.js runtime as a parent image
-FROM node:18
+# Use the kasmweb/chrome:1.16.0 image as the base
+FROM kasmweb/chrome:1.16.0
 
-# Set the working directory in the container
-WORKDIR /usr/src/app
+# Expose port 6901 for the VNC server
+EXPOSE 6901
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+# Set environment variables
+ENV VNC_PW=p9023ds3 \
+    SHM_SIZE=512m
 
-# Install the app dependencies
-RUN npm install
-
-# Copy the rest of the application code to the working directory
-COPY . .
-
-# Expose the port the app will run on (default is 3000)
-EXPOSE 3000
-
-
-# Command to run the app
-CMD ["node", "index.js"]
+# Default command to run the container
+CMD ["--shm-size=512m", "-p", "6901:6901"]
