@@ -18,6 +18,19 @@ app.get('/runme', (req, res) => {
     `);
 });
 
+app.get('/', (req, res) => {
+    res.status(200).send(`
+        <html>
+            <head>
+                <title>Server Status</title>
+            </head>
+            <body>
+                <h1>Server is running</h1>
+                </body>
+        </html>
+    `);
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
